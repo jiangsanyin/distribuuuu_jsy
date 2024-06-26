@@ -15,6 +15,10 @@ if __name__ == "__main__":
     net = net.to(device=device)
 
     # 2. define dataloader
+    '''lib/python3.10/site-packages/torchvision/datasets# vi cifar.py, url property'value indicates it will
+    download file cifar-10-python.tar.gz from https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz automatically.
+    but the access to www.cs.toronto.edu was not smooth or fast, you'd better change this to a certain controllable uri"
+    '''
     trainset = torchvision.datasets.CIFAR10(
         root="./data",
         train=True,
