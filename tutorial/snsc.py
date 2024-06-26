@@ -56,17 +56,17 @@ if __name__ == "__main__":
 
     # 4. start to train
     net.train()
-    for ep in range(1, EPOCHS + 1):
+    for ep in range(1, EPOCHS + 1):                                 # 控制在全部数据上训练的次数
         train_loss = correct = total = 0
 
         for idx, (inputs, targets) in enumerate(train_loader):
             inputs, targets = inputs.to(device), targets.to(device)
             outputs = net(inputs)
 
-            loss = criterion(outputs, targets)
+            loss = criterion(outputs, targets)                      # 获得输出结果和样本值的损失函数
             optimizer.zero_grad()
-            loss.backward()
-            optimizer.step()
+            loss.backward()                                         # 根据loss 进行反向梯度传播
+            optimizer.step()                                        # 用计算的梯度去做优化
 
             train_loss += loss.item()
             total += targets.size(0)
